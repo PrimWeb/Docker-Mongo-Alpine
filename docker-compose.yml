@@ -1,18 +1,18 @@
-version: '3'
+version: '3.8'
 
 services:
 
   mongodb:  
     build: .
-    image: dannyben/alpine-mongo
+    image: primdev/mongo-alpine
     ports: ["27017:27017"]
 
   client:  
-    image: dannyben/alpine-mongo
+    image: primdev/mongo-alpine
     command: mongo mongodb://mongodb:27017
     depends_on: [mongodb]
 
   bash:  
-    image: dannyben/alpine-mongo
+    image: primdev/mongo-alpine
     command: bash
     depends_on: [mongodb]

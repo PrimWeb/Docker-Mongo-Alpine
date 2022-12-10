@@ -1,14 +1,14 @@
-Docker Alpine MongoDB Image
+Docker MongoDB Alpine Image
 ==================================================
 
 Alpine Linux with MongoDB.
 
 ```
 # Basic run
-$ docker run -it -p 27017:27017 dannyben/alpine-mongo
+$ docker run -tdi -p 27017:27017 primdev/mongo-alpine
 
 # Run with data mounted to the native host
-$ docker run -v ~/my_mongo_data:/data/db -it -p 27017:27017 dannyben/alpine-mongo
+$ docker run --rm -tdi --name mongo -v ~/mongoDbData:/data/db -p 27017:27017 -p 27017:27017 primdev/mongo-alpine
 ```
 
 With the provided `docker-compose` file, you can also run:
@@ -22,5 +22,5 @@ $ docker-compose run client
 - [View on Docker Hub][1]
 - [View on GitHub][2]
 
-[1]: https://hub.docker.com/r/dannyben/alpine-mongo/
-[2]: https://github.com/DannyBen/docker-alpine-mongo
+[1]: https://hub.docker.com/r/primdev/mongo-alpine
+[2]: https://github.com/PrimWeb/Docker-Mongo-Alpine

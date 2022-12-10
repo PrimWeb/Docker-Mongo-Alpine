@@ -1,13 +1,14 @@
-FROM alpine:3.9
+FROM alpine:latest
 
-ENV TERM=linux
-
-RUN apk add --no-cache bash mongodb
-
-RUN mkdir -p /data/db && \
-    chown -R mongodb /data/db
+################################
+# Add mongodb package from older Alpine Release
+# Last release with MongoDB APK is Alpine:3.9
+RUN apk add --no-cache --purge -l -X https://dl-cdn.alpinelinux.org/alpine/v3.9/community -X https://dl-cdn.alpinelinux.org/alpine/v3.9/main mongodb
+#RUN apk upgrade --no-cache --purge
 
 VOLUME /data/db
-EXPOSE 27017
+EXPOSE 27017 28017
 
-CMD [ "mongod", "--bind_ip", "0.0.0.0"]
+COPY run.sh /root
+ENTRYPOINT [ "/root/run.sh" ]
+CMD [ "mongod", "--bind_ip", "0.0.0.0" ]
