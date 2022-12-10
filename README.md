@@ -8,7 +8,7 @@ Alpine Linux with MongoDB.
 $ docker run -tdi -p 27017:27017 primdev/mongo-alpine
 
 # Run with data mounted to the native host
-$ docker run --rm -tdi --name mongo -v ~/mongoDbData:/data/db -p 27017:27017 -p 27017:27017 primdev/mongo-alpine
+$ docker run --rm -tdi --name mongo -v ~/mongoDbData:/data/db -p 27017:27017 primdev/mongo-alpine
 ```
 
 With the provided `docker-compose` file, you can also run:
